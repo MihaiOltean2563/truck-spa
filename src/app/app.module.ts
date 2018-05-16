@@ -2,18 +2,20 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
-
+//Custom Components
 import { AppComponent } from './app.component';
-import { CarouselComponent } from './shared/components/carousel/carousel.component';
-import { CarouselItemDirective } from './shared/directives/carousel-item.directive';
-import { CarouselItemElementDirective } from './shared/directives/carousel-item-element.directive';
+import { HomeComponent } from './shared/components/home/home.component';
+import { AboutComponent } from './shared/components/about/about.component';
+import { ServicesComponent } from './shared/components/services/services.component';
+import { ContactComponent } from './shared/components/contact/contact.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CarouselComponent,
-    CarouselItemDirective,
-    CarouselItemElementDirective
+    HomeComponent,
+    AboutComponent,
+    ServicesComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
