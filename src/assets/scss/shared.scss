@@ -1,3 +1,32 @@
-section{
-    height: 100vh;
+*{
+  box-sizing: border-box;
 }
+body{
+  margin: 0;
+}
+p{
+  margin: 0;
+}
+
+section{
+  height: 100vh;
+}
+
+.page-wrapper{
+  display:flex;
+  justify-content: center;
+    
+  .navigation{
+    width: 15%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+
+    ul{
+      position: fixed;
+    }
+  }
+  .main{
+    width:85%;
+  }
+}//page-wrapper end
