@@ -28,5 +28,8 @@ section{
   }
   .main{
     width:85%;
+    overflow:hidden;
+    height: 100vh;
+    border: 1px solid goldenrod;
   }
 }//page-wrapper end
