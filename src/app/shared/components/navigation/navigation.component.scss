@@ -3,17 +3,25 @@
   justify-content: center;
   height: 100vh;
   align-items:center;
-  
+
   ul{
     position: fixed;
     list-style: none;
-    border: 1px solid goldenrod;
     margin:0;
     padding:0;
 
 
     li{
-      border: 1px solid coral;
+      line-height:30px;
+      padding: 10px;
+
+      a{
+        font-size: 20px;
+        text-decoration: none;
+      }
+      svg{
+        margin-right: 5px;
+      }
     }
   }
 }
