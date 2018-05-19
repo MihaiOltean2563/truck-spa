@@ -8,7 +8,12 @@ import { HomeComponent } from './shared/components/home/home.component';
 import { AboutComponent } from './shared/components/about/about.component';
 import { ServicesComponent } from './shared/components/services/services.component';
 import { ContactComponent } from './shared/components/contact/contact.component';
+
+//Custom Directives
 import { ComponentItemDirective } from './shared/directives/component-item.directive';
+import { NavigationComponent } from './shared/components/navigation/navigation.component';
+
+
 
 @NgModule({
   declarations: [
@@ -17,7 +22,8 @@ import { ComponentItemDirective } from './shared/directives/component-item.direc
     AboutComponent,
     ServicesComponent,
     ContactComponent,
-    ComponentItemDirective
+    ComponentItemDirective,
+    NavigationComponent
   ],
   imports: [
     BrowserModule,

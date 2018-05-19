@@ -10,21 +10,23 @@ p{
 
 section{
   height: 100vh;
+  .dino-img{
+    margin:0 auto;
+    img{
+      max-width:400px;
+    }
+  }
 }
 
 .page-wrapper{
   display:flex;
   justify-content: center;
     
-  .navigation{
+  .navigation-component{
     width: 15%;
     height: 100vh;
-    display: flex;
-    align-items: center;
-
-    ul{
-      position: fixed;
-    }
+    // display: flex;
+    // align-items: center;
   }
   .main{
     width:85%;
