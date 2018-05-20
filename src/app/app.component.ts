@@ -1,4 +1,4 @@
-import { Component, ContentChildren, QueryList, AfterViewInit, ViewChildren, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ContentChildren, QueryList, AfterViewInit, ViewChildren, ElementRef, HostListener, ViewChild, Output, EventEmitter } from '@angular/core';
 import { ComponentItemDirective } from './shared/directives/component-item.directive';
 import { AnimationBuilder, AnimationFactory, animate, style, AnimationPlayer } from '@angular/animations';
 
@@ -16,14 +16,10 @@ export class AppComponent implements AfterViewInit {
 
   @ViewChildren(ComponentItemDirective, {read: ElementRef}) private componentList: QueryList<ElementRef>;
   @ViewChild('componentsWrapper') private componentsWrapper : ElementRef;
-
   constructor(private builder : AnimationBuilder){}
 
   ngAfterViewInit(){
-    console.log('component list: ', this.componentList);
-    console.log('First Component', this.componentList.first.nativeElement.childNodes[0]);
     this.firstComponentHeight = this.componentList.first.nativeElement.childNodes[0].offsetHeight;
-    console.log('componentsWrapper', this.componentsWrapper);
   }
 
   next(){
@@ -46,7 +42,7 @@ export class AppComponent implements AfterViewInit {
     if(this.currentComponent === 0) return;
 
     this.currentComponent = ((this.currentComponent - 1) + this.componentList.length) % this.componentList.length;    
-    console.log('currentSlide', this.currentComponent);
+    console.log('currentComponent', this.currentComponent);
     const offset = this.currentComponent * this.firstComponentHeight;
     
     const myAnimation : AnimationFactory = this.builder.build(
@@ -66,5 +62,6 @@ export class AppComponent implements AfterViewInit {
       this.prev();
     }
   }
+
 
 }

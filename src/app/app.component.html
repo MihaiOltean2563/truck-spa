@@ -1,6 +1,9 @@
 <div class="page-wrapper">
     
-  <app-navigation class="navigation-component"></app-navigation>
+  <app-navigation 
+    class="navigation-component" 
+    [activeComponent]="currentComponent">
+  </app-navigation>
   
   <div class="main">
     <div class="components-wrapper" #componentsWrapper>
