@@ -1,6 +1,5 @@
 import { Component, OnInit, ViewChildren, ElementRef, QueryList, AfterViewInit, Input, HostListener } from '@angular/core';
 import { ComponentItemDirective } from '../../directives/component-item.directive';
-import { NavigationItemDirective } from '../../directives/navigation-item.directive';
 
 @Component({
   selector: 'app-navigation',
@@ -10,10 +9,9 @@ import { NavigationItemDirective } from '../../directives/navigation-item.direct
 export class NavigationComponent implements OnInit, AfterViewInit {
 
   constructor() { }
-  
+
   @Input() activeComponent: number;
   public currentComponent: number = 0;
-  private isActiveC: boolean;
 
   private navListItems = [
     { icon: 'home', label: 'Home'},
@@ -25,7 +23,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   ngOnInit() {
   }
   ngAfterViewInit(){
-    console.log('navListItems: ', this.navListItems);
+    // console.log('componentList: ', this.componentList);
   }
 
   isActive(i){
@@ -42,15 +40,13 @@ export class NavigationComponent implements OnInit, AfterViewInit {
 
   next(){
     if(this.currentComponent + 1 === this.navListItems.length) return;
-
     this.currentComponent = (this.currentComponent + 1 ) % this.navListItems.length;
-    console.log('currentComponent in nav', this.currentComponent);
   }
   prev(){
     if(this.currentComponent === 0) return;
-
     this.currentComponent = ((this.currentComponent - 1) + this.navListItems.length) % this.navListItems.length;    
-    console.log('currentComponent in nav', this.currentComponent);
   }
-  
+  goToSection(i){
+    console.log('i', i);
+  }
 }
