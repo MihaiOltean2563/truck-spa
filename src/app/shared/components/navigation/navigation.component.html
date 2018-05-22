@@ -1,8 +1,14 @@
 <div class="navigation">
   <ul class="navigation-list">
-    <li *ngFor="let item of navListItems;let i = index" (click)="goToSection(i)">
-      <a href="#" [ngClass]="{'active': isActive(i)}">
-        <i class="fa fa-{{item.icon}}" aria-hidden="true"></i>{{item.label}}
+    <li 
+    *ngFor="let item of navListItems;let i = index" 
+    id="{{item.label | lowercase}}"
+    (click)="goToSection(item.label, i)"
+    #listItems>
+      <a href="#" 
+      [ngClass]="{'active': isActive(i)}">
+        <i class="fa fa-{{item.icon}}" aria-hidden="true"></i>
+        {{item.label}}
       </a>
     </li>
   </ul>

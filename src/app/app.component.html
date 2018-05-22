@@ -2,15 +2,16 @@
     
   <app-navigation 
     class="navigation-component" 
-    [activeComponent]="currentComponent">
+    [activeComponent]="currentComponent"
+    (scrollThisElemIntoView)="scrollThisIntoView($event)">
   </app-navigation>
   
   <div class="main">
     <div class="components-wrapper" #componentsWrapper>
-      <app-home class="component-item"></app-home>
-      <app-about class="component-item"></app-about>
-      <app-services class="component-item"></app-services>
-      <app-contact class="component-item"></app-contact>
+      <home class="component-item"></home>
+      <about class="component-item"></about>
+      <services class="component-item"></services>
+      <contact class="component-item"></contact>
     </div>
   </div>
 </div>

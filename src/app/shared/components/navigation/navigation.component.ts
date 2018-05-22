@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChildren, ElementRef, QueryList, AfterViewInit, Input, HostListener } from '@angular/core';
+import { Component, OnInit, ViewChildren, ElementRef, QueryList, AfterViewInit, Input, HostListener, ViewChild, Output, EventEmitter } from '@angular/core';
 import { ComponentItemDirective } from '../../directives/component-item.directive';
 
 @Component({
@@ -13,17 +13,23 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   @Input() activeComponent: number;
   public currentComponent: number = 0;
 
+  @Output() scrollThisElemIntoView: EventEmitter<ElementRef> = new EventEmitter<ElementRef>();
+
+  @ViewChildren('listItems', {read: ElementRef}) 
+  private listItems: QueryList<ElementRef>;
+
+
   private navListItems = [
     { icon: 'home', label: 'Home'},
     { icon: 'list-alt', label: 'Services'},
     { icon: 'info-circle', label: 'About'},
     { icon: 'phone', label: 'Contact'},
   ];
-
+  
   ngOnInit() {
   }
   ngAfterViewInit(){
-    // console.log('componentList: ', this.componentList);
+    console.log('listItems: ', this.listItems);
   }
 
   isActive(i){
@@ -46,7 +52,12 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     if(this.currentComponent === 0) return;
     this.currentComponent = ((this.currentComponent - 1) + this.navListItems.length) % this.navListItems.length;    
   }
-  goToSection(i){
-    console.log('i', i);
+  goToSection(elem, index){
+    console.log('goToSection triggered!');
+    console.log('elem',elem);
+  
+
+    this.scrollThisElemIntoView.emit(elem);
   }
+
 }

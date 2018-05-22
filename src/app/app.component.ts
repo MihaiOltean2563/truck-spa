@@ -14,13 +14,20 @@ export class AppComponent implements AfterViewInit {
   private player: AnimationPlayer;
   private timing: string = '500ms ease-in';
 
-  @ViewChildren(ComponentItemDirective, {read: ElementRef}) private componentList: QueryList<ElementRef>;
+  @ViewChildren(ComponentItemDirective, {read: ElementRef}) 
+  public componentList: QueryList<ElementRef>;
   @ViewChild('componentsWrapper') private componentsWrapper : ElementRef;
   constructor(private builder : AnimationBuilder){}
-
+  public initializedComps;
+  
   ngAfterViewInit(){
     this.firstComponentHeight = this.componentList.first.nativeElement.childNodes[0].offsetHeight;
+    // this.componentList.forEach(comp => {
+    //   console.log("comp:", comp.nativeElement.children[0].id);
+    // })
   }
+
+  
 
   next(){
     if(this.currentComponent + 1 === this.componentList.length) return;
@@ -63,5 +70,26 @@ export class AppComponent implements AfterViewInit {
     }
   }
 
+  scrollThisIntoView(sectionToScrollTo){
+    console.log('scrollThisIntoView triggered!');
+    console.log('sectionToScrollTo',sectionToScrollTo);
+
+    let found = this.componentList
+    .find( item => {
+      console.log('item: ', item);
+      console.log('item section elem: ', item.nativeElement.nodeName.toLowerCase());
+      return item.nativeElement.nodeName.toLowerCase() === sectionToScrollTo.toLowerCase();
+    });
+    console.log('found', found);
+
+    found.nativeElement.scrollIntoView();
+    /* options obj: 
+    { 
+      behavior: "smooth", 
+      block: "start", 
+      inline:'nearest' 
+    }
+    */
+  }
 
 }
