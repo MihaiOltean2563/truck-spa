@@ -41,28 +41,13 @@ export class AppComponent implements AfterViewInit {
     private winRef: WindowObjReferenceService
   ) {
     // getting the native window obj
-    console.log("Native window obj", winRef.nativeWindow);
     this.actualWindowObj = winRef.nativeWindow;
   }
 
   ngAfterViewInit() {
     this.firstComponentHeight = this.componentList.toArray()[0].nativeElement.offsetHeight;
-    // console.log('firstComponentHeight', this.firstComponentHeight);
-    console.log('componentList', this.componentList.toArray());
   }
 
-  // isInView(elem) {
-  //   var bounding = elem.getBoundingClientRect();
-  //   return (
-  //       bounding.top >= 0 &&
-  //       bounding.left >= 0 &&
-  //       bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
-  //       bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
-  //   );
-  // };
-  isInView(){
-
-  }
 
   next() {
     if (this.currentComponent + 1 === this.componentList.length) return;
@@ -108,50 +93,15 @@ export class AppComponent implements AfterViewInit {
     }
   }
 
-  scrollThisIntoView(e) {
-    console.log('app got event: ',e);
+  scrollThisIntoView(index: number) {
+    const offset = index * this.firstComponentHeight;
+    
+    const myAnimation: AnimationFactory = this.builder.build([
+      animate(this.timing, style({ transform: `translateY(-${offset}px)` }))
+    ]);
 
-    // let found = this.componentList.find(item => {
-    //   return (
-    //     item.nativeElement.nodeName.toLowerCase() ===
-    //     sectionToScrollTo.toLowerCase()
-    //   );
-    // });
-    // console.log("found", found);
-    // const offset = this.currentComponent * this.firstComponentHeight;
-    // const myAnimation: AnimationFactory = this.builder.build([
-    //   animate(this.timing, style({ transform: `translateY(-${offset}px)` }))
-    // ]);
-
-    // this.player = myAnimation.create(found.nativeElement);
-    // this.player.play();
-    // console.log("window", this.winRef.nativeWindow);
-
-    // // found.nativeElement.scrollIntoViewIfNeeded();
-    // let positionObj = this.getPosition(found.nativeElement.children[0]);
-    // // console.log("posObj", positionObj);
-
-    // this.winRef.nativeWindow.scrollTo(0, 200);
-    /* options obj: 
-    { 
-      behavior: "smooth", 
-      block: "start", 
-      inline:'nearest' 
-    }
-    */
+    this.player = myAnimation.create(this.componentsWrapper.nativeElement);
+    this.player.play();
   }
 
-  getPosition(element) {
-    var xPosition = 0;
-    var yPosition = 0;
-
-    while (element) {
-      xPosition += element.offsetLeft - element.scrollLeft + element.clientLeft;
-      yPosition += element.offsetTop - element.scrollTop + element.clientTop;
-      element = element.offsetParent;
-    }
-    console.log("x", xPosition);
-    console.log("y", yPosition);
-    return { x: xPosition, y: yPosition };
-  }
 }

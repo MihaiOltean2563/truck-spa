@@ -7,10 +7,17 @@ body{
 p{
   margin: 0;
 }
-
+home,
+about,
+services,
+contact{
+  width:100vw;
+}
 section{
-  height: 100vh;
+  min-height: 100vh;
   border:2px solid lime;
+  display:flex;
+
   .dino-img{
     margin:0 auto;
     img{
@@ -32,8 +39,7 @@ section{
   .components-wrapper{
     //temporary for debugging
     width:85%;
-    border: 3px solid red;
-    // height: 100vh;
+    // border: 3px solid red;
   }
 
   .main{

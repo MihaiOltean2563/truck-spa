@@ -1,3 +1,11 @@
 #home{
-    // background-color: lightgreen;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    h1{
+        font-size: 10rem;
+        color: gray;
+        opacity: 0.075;
+    }
 }
