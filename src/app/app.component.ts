@@ -29,7 +29,7 @@ export class AppComponent implements AfterViewInit {
   public currentComponent: number = 0;
   public firstComponentHeight: number;
   private player: AnimationPlayer;
-  private timing: string = "500ms ease-in";
+  private timing: string = "700ms ease-in";
   private actualWindowObj;
   @ViewChildren(ComponentItemDirective, { read: ElementRef })
   public componentList: QueryList<ElementRef>;
