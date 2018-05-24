@@ -13,6 +13,7 @@ import { ContactComponent } from './shared/components/contact/contact.component'
 //Custom Directives
 import { ComponentItemDirective } from './shared/directives/component-item.directive';
 import { NavigationComponent } from './shared/components/navigation/navigation.component';
+import { WindowObjReferenceService } from './shared/services/window-obj-reference.service';
 
 
 
@@ -31,7 +32,7 @@ import { NavigationComponent } from './shared/components/navigation/navigation.c
     BrowserAnimationsModule,
     CommonModule
   ],
-  providers: [],
+  providers: [WindowObjReferenceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

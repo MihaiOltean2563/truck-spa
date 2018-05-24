@@ -13,7 +13,8 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   @Input() activeComponent: number;
   public currentComponent: number = 0;
 
-  @Output() scrollThisElemIntoView: EventEmitter<ElementRef> = new EventEmitter<ElementRef>();
+  // @Output() scrollThisElemIntoView: EventEmitter<ElementRef> = new EventEmitter<ElementRef>();
+  @Output() scrollThisElemIntoView: EventEmitter<number> = new EventEmitter<number>();
 
   @ViewChildren('listItems', {read: ElementRef}) 
   private listItems: QueryList<ElementRef>;
@@ -55,8 +56,6 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   goToSection(elem, index){
     console.log('goToSection triggered!');
     console.log('elem',elem);
-  
-
     this.scrollThisElemIntoView.emit(elem);
   }
 
