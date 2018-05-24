@@ -46,9 +46,8 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    // this.firstComponentHeight = this.componentList.first.nativeElement.childNodes[0].offsetHeight;
     this.firstComponentHeight = this.componentList.toArray()[0].nativeElement.offsetHeight;
-    console.log('firstComponentHeight', this.firstComponentHeight)
+    // console.log('firstComponentHeight', this.firstComponentHeight);
     console.log('componentList', this.componentList.toArray());
   }
 
@@ -109,17 +108,16 @@ export class AppComponent implements AfterViewInit {
     }
   }
 
-  scrollThisIntoView(sectionToScrollTo) {
-    console.log("scrollThisIntoView triggered!");
-    // console.log('app comp got ',sectionToScrollTo);
+  scrollThisIntoView(e) {
+    console.log('app got event: ',e);
 
-    let found = this.componentList.find(item => {
-      return (
-        item.nativeElement.nodeName.toLowerCase() ===
-        sectionToScrollTo.toLowerCase()
-      );
-    });
-    console.log("found", found);
+    // let found = this.componentList.find(item => {
+    //   return (
+    //     item.nativeElement.nodeName.toLowerCase() ===
+    //     sectionToScrollTo.toLowerCase()
+    //   );
+    // });
+    // console.log("found", found);
     // const offset = this.currentComponent * this.firstComponentHeight;
     // const myAnimation: AnimationFactory = this.builder.build([
     //   animate(this.timing, style({ transform: `translateY(-${offset}px)` }))

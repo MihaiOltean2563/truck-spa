@@ -22,8 +22,8 @@ export class NavigationComponent implements OnInit, AfterViewInit {
 
   private navListItems = [
     { icon: 'home', label: 'Home'},
-    { icon: 'list-alt', label: 'Services'},
     { icon: 'info-circle', label: 'About'},
+    { icon: 'list-alt', label: 'Services'},
     { icon: 'phone', label: 'Contact'},
   ];
   
@@ -53,10 +53,9 @@ export class NavigationComponent implements OnInit, AfterViewInit {
     if(this.currentComponent === 0) return;
     this.currentComponent = ((this.currentComponent - 1) + this.navListItems.length) % this.navListItems.length;    
   }
-  goToSection(elem, index){
-    console.log('goToSection triggered!');
-    console.log('elem',elem);
-    this.scrollThisElemIntoView.emit(elem);
+  goToSection(index: number){
+    console.log("Go to section: " + index);
+    this.scrollThisElemIntoView.emit(index);
   }
 
 }

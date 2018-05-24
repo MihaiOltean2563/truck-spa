@@ -3,7 +3,7 @@
     <li 
     *ngFor="let item of navListItems;let i = index" 
     id="{{item.label | lowercase}}"
-    (click)="goToSection(item.label, i)"
+    (click)="goToSection(i)"
     #listItems>
       <a href="#" 
       [ngClass]="{'active': isActive(i)}">
