@@ -23,15 +23,22 @@ section{
   justify-content: center;
   background: -webkit-gradient(linear, right top, left top, from(#D1335B), to(#00152e));
   background: linear-gradient(to left, #D1335B, #00152e);
-
+  
   .navigation-component{
     width: 15%;
     height: 100vh;
   }
+  .components-wrapper{
+    //temporary for debugging
+    width:85%;
+    border: 3px solid red;
+    height: 100vh;
+  }
+  
   .main{
     width:85%;
     overflow:hidden;
     height: 100vh;
-    border: 1px solid goldenrod;
+    border: 3px solid goldenrod;
   }
 }//page-wrapper end

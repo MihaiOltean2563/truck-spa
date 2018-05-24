@@ -8,19 +8,19 @@
   
   <div class="main">
     <div class="components-wrapper" #componentsWrapper>
-      <section id="home" style="border:1px solid green">
-        <home class="component-item"></home>
+      <section id="home" class="component-item" [class.isInView]="isInView()" style="border:3px solid green">
+        <home></home>
       </section>
-      <section id="about" style="border:1px solid green">
-        <about class="component-item"></about>
+      <section id="about" class="component-item" style="border:3px solid green">
+        <about></about>
       </section>
-      <section id="services" style="border:1px solid green">
-        <services class="component-item"></services>
+      <section id="services" class="component-item" style="border:3px solid green">
+        <services></services>
       </section>
-      <section id="contact" style="border:1px solid green">
-          <contact class="component-item"></contact>
+      <section id="contact" style="border:3px solid green" class="component-item">
+          <contact></contact>
       </section>
-
     </div>
-  </div>
+  
+  
 </div>

@@ -35,6 +35,7 @@ export class AppComponent implements AfterViewInit {
   public componentList: QueryList<ElementRef>;
   @ViewChild("componentsWrapper") private componentsWrapper: ElementRef;
 
+
   constructor(
     private builder: AnimationBuilder,
     private winRef: WindowObjReferenceService
@@ -45,7 +46,23 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngAfterViewInit() {
-    this.firstComponentHeight = this.componentList.first.nativeElement.childNodes[0].offsetHeight;
+    // this.firstComponentHeight = this.componentList.first.nativeElement.childNodes[0].offsetHeight;
+    this.firstComponentHeight = this.componentList.toArray()[0].nativeElement.offsetHeight;
+    console.log('firstComponentHeight', this.firstComponentHeight)
+    console.log('componentList', this.componentList.toArray());
+  }
+
+  // isInView(elem) {
+  //   var bounding = elem.getBoundingClientRect();
+  //   return (
+  //       bounding.top >= 0 &&
+  //       bounding.left >= 0 &&
+  //       bounding.bottom <= (window.innerHeight || document.documentElement.clientHeight) &&
+  //       bounding.right <= (window.innerWidth || document.documentElement.clientWidth)
+  //   );
+  // };
+  isInView(){
+
   }
 
   next() {
@@ -59,9 +76,10 @@ export class AppComponent implements AfterViewInit {
     const myAnimation: AnimationFactory = this.builder.build([
       animate(this.timing, style({ transform: `translateY(-${offset}px)` }))
     ]);
-
+   
+    
     this.player = myAnimation.create(this.componentsWrapper.nativeElement);
-    // this.player.play();
+    this.player.play();
   }
   prev() {
     if (this.currentComponent === 0) return;
@@ -77,7 +95,7 @@ export class AppComponent implements AfterViewInit {
     ]);
 
     this.player = myAnimation.create(this.componentsWrapper.nativeElement);
-    // this.player.play();
+    this.player.play();
   }
 
   @HostListener("window:wheel", ["$event"])

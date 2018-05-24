@@ -30,7 +30,7 @@ export class NavigationComponent implements OnInit, AfterViewInit {
   ngOnInit() {
   }
   ngAfterViewInit(){
-    console.log('listItems: ', this.listItems);
+    // console.log('listItems: ', this.listItems);
   }
 
   isActive(i){
