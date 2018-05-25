@@ -7,9 +7,13 @@
     #listItems>
       <a href="#" 
       [ngClass]="{'active': isActive(i)}">
-        <i class="fa fa-{{item.icon}}" aria-hidden="true"></i>
-        {{item.label}}
+        <i 
+        class="fa fa-{{item.icon}}" 
+        aria-hidden="true"
+        data-fa-mask="fas fa-circle" 
+        data-fa-transform="shrink-5 up-.5">
+        </i> {{item.label}}
       </a>
-    </li>
   </ul>
+
 </div>
