@@ -5,7 +5,7 @@
     id="{{item.label | lowercase}}"
     (click)="listClick(event, item, i)"
     #listItems
-    [ngClass]="{'active': selectedItem == item}">
+    [ngClass]="{'active': selectedItem == item || isActive(i)}">
       <a href="#">
         <i 
         class="fa fa-{{item.icon}}" 

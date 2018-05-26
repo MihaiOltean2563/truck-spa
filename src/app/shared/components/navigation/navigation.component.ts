@@ -41,7 +41,11 @@ export class NavigationComponent implements OnInit {
   private selectedItem = this.navListItems[0];
 
   ngOnInit() {}
- 
+
+  isActive(i){
+    return (this.activeComponent === i ) ? true : false;
+  }
+  
   listClick(event, newValue, index) {
     this.selectedItem = newValue || index;  // don't forget to update the model here
     this.scrollThisElemIntoView.emit(index);
