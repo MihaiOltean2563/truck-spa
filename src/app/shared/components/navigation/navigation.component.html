@@ -3,10 +3,10 @@
     <li 
     *ngFor="let item of navListItems;let i = index" 
     id="{{item.label | lowercase}}"
-    (click)="goToSection(i)"
-    #listItems>
-      <a href="#" 
-      [ngClass]="{'active': isActive(i)}">
+    (click)="listClick(event, item, i)"
+    #listItems
+    [ngClass]="{'active': selectedItem == item}">
+      <a href="#">
         <i 
         class="fa fa-{{item.icon}}" 
         aria-hidden="true"

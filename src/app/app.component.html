@@ -2,8 +2,9 @@
     
   <app-navigation 
     class="navigation-component" 
-    [activeComponent]="currentComponent"
-    (scrollThisElemIntoView)="scrollThisIntoView($event)">
+    [(activeComponent)]="currentComponent"
+    (scrollThisElemIntoView)="scrollThisIntoView($event)"
+    >
   </app-navigation>
   
   <div class="main">

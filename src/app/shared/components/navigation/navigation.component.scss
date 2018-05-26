@@ -20,11 +20,14 @@
         text-decoration: none;
         color: #a09e9e;
       }
-      a.active{
-        color: white;
-      }
+      
       svg{
         margin-right: 5px;
+      }
+    }
+    li.active{
+      a{
+        color: white;
       }
     }
   }

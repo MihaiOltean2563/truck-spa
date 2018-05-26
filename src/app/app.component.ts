@@ -33,6 +33,7 @@ export class AppComponent implements AfterViewInit {
   private actualWindowObj;
   @ViewChildren(ComponentItemDirective, { read: ElementRef })
   public componentList: QueryList<ElementRef>;
+
   @ViewChild("componentsWrapper") private componentsWrapper: ElementRef;
 
 
@@ -95,7 +96,7 @@ export class AppComponent implements AfterViewInit {
 
   scrollThisIntoView(index: number) {
     const offset = index * this.firstComponentHeight;
-    
+    console.log('go to section from nav: ', index)
     const myAnimation: AnimationFactory = this.builder.build([
       animate(this.timing, style({ transform: `translateY(-${offset}px)` }))
     ]);

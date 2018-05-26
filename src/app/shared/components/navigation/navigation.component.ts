@@ -9,7 +9,8 @@ import {
   HostListener,
   ViewChild,
   Output,
-  EventEmitter
+  EventEmitter,
+  Renderer2
 } from "@angular/core";
 import { ComponentItemDirective } from "../../directives/component-item.directive";
 
@@ -18,60 +19,32 @@ import { ComponentItemDirective } from "../../directives/component-item.directiv
   templateUrl: "./navigation.component.html",
   styleUrls: ["./navigation.component.scss"]
 })
-export class NavigationComponent implements OnInit, AfterViewInit {
-  constructor() {}
+export class NavigationComponent implements OnInit {
+  constructor(
+    private renderer: Renderer2) {}
 
   @Input() activeComponent: number;
+
   public currentComponent: number = 0;
 
-  // @Output() scrollThisElemIntoView: EventEmitter<ElementRef> = new EventEmitter<ElementRef>();
+  
   @Output()
   scrollThisElemIntoView: EventEmitter<number> = new EventEmitter<number>();
 
-  @ViewChildren("listItems", { read: ElementRef })
-  private listItems: QueryList<ElementRef>;
-
+  
   private navListItems = [
     { icon: "home", label: "Home" },
     { icon: "info-circle", label: "About" },
     { icon: "list-alt", label: "Services" },
     { icon: "phone", label: "Contact" }
   ];
+  private selectedItem = this.navListItems[0];
 
   ngOnInit() {}
-  ngAfterViewInit() {
-    // console.log('listItems: ', this.listItems);
-  }
-
-  isActive(i) {
-    return this.activeComponent === i ? true : false;
-  }
-
-  @HostListener("window:wheel", ["$event"])
-  onWheelScroll(event: any) {
-    if (event.deltaY > 0) {
-      //scrolling down
-      this.next();
-    } else {
-      //scrolling up
-      this.prev();
-    }
-  }
-
-  next() {
-    if (this.currentComponent + 1 === this.navListItems.length) return;
-    this.currentComponent =
-      (this.currentComponent + 1) % this.navListItems.length;
-  }
-  prev() {
-    if (this.currentComponent === 0) return;
-    this.currentComponent =
-      (this.currentComponent - 1 + this.navListItems.length) %
-      this.navListItems.length;
-  }
-  goToSection(index: number) {
-    console.log("Go to section: " + index);
+ 
+  listClick(event, newValue, index) {
+    this.selectedItem = newValue || index;  // don't forget to update the model here
     this.scrollThisElemIntoView.emit(index);
-    // this.isActive(index);
+    console.log('new selectedItem', this.selectedItem);
   }
 }

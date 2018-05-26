@@ -16,7 +16,6 @@ import { NavigationComponent } from './shared/components/navigation/navigation.c
 import { WindowObjReferenceService } from './shared/services/window-obj-reference.service';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
