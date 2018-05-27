@@ -10,7 +10,8 @@ import {
   ViewChild,
   Output,
   EventEmitter,
-  Renderer2
+  Renderer2,
+  OnChanges
 } from "@angular/core";
 import { ComponentItemDirective } from "../../directives/component-item.directive";
 
@@ -19,36 +20,43 @@ import { ComponentItemDirective } from "../../directives/component-item.directiv
   templateUrl: "./navigation.component.html",
   styleUrls: ["./navigation.component.scss"]
 })
-export class NavigationComponent implements OnInit {
+export class NavigationComponent {
   constructor(
-    private renderer: Renderer2) {}
+    private renderer: Renderer2) {
+      
+    }
 
-  @Input() activeComponent: number;
+    public currentComponent: number = 0;
 
-  public currentComponent: number = 0;
+    @Input() set actComp(index: number){
+      this.isActive(index);
+    };
 
-  
+
   @Output()
-  scrollThisElemIntoView: EventEmitter<number> = new EventEmitter<number>();
+  scrollThisElemIntoView: EventEmitter<any> = new EventEmitter<any>();
 
   
   private navListItems = [
-    { icon: "home", label: "Home" },
-    { icon: "info-circle", label: "About" },
-    { icon: "list-alt", label: "Services" },
-    { icon: "phone", label: "Contact" }
+    { icon: "home", label: "Home", isActive: true },
+    { icon: "info-circle", label: "About", isActive: false },
+    { icon: "list-alt", label: "Services", isActive: false },
+    { icon: "phone", label: "Contact", isActive: false }
   ];
-  private selectedItem = this.navListItems[0];
 
-  ngOnInit() {}
+  
+  private selectedItem = 0;
 
   isActive(i){
-    return (this.activeComponent === i ) ? true : false;
+    this.navListItems[this.selectedItem].isActive = false; //reset
+    this.navListItems[i].isActive = true;
+    this.selectedItem = i;
   }
   
-  listClick(event, newValue, index) {
-    this.selectedItem = newValue || index;  // don't forget to update the model here
-    this.scrollThisElemIntoView.emit(index);
+  listClick(newItem, index) {
+    this.isActive(index);
+
+    this.scrollThisElemIntoView.emit({index: index, selectedItem: this.selectedItem});
     console.log('new selectedItem', this.selectedItem);
   }
 }

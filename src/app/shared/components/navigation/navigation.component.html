@@ -3,9 +3,8 @@
     <li 
     *ngFor="let item of navListItems;let i = index" 
     id="{{item.label | lowercase}}"
-    (click)="listClick(event, item, i)"
-    #listItems
-    [ngClass]="{'active': selectedItem == item || isActive(i)}">
+    (click)="listClick(item, i)"
+    [ngClass]="{'active': item.isActive }">
       <a href="#">
         <i 
         class="fa fa-{{item.icon}}" 

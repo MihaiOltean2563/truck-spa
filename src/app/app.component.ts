@@ -94,8 +94,8 @@ export class AppComponent implements AfterViewInit {
     }
   }
 
-  scrollThisIntoView(index: number) {
-    const offset = index * this.firstComponentHeight;
+  scrollThisIntoView(index: any) {
+    const offset = index.index * this.firstComponentHeight;
     console.log('go to section from nav: ', index)
     const myAnimation: AnimationFactory = this.builder.build([
       animate(this.timing, style({ transform: `translateY(-${offset}px)` }))
