@@ -12,6 +12,11 @@ about,
 services,
 contact{
   width:100vw;
+  color: white;
+  h1,h2,h3,h4,h5,h6{
+    color: white;
+    font-size: 5rem;
+  }
 }
 section{
   min-height: 100vh;
@@ -47,5 +52,13 @@ section{
     overflow:hidden;
     height: 100vh;
     border: 3px solid goldenrod;
+  }
+
+  // Buttons
+  .btn-transparent-rounded{
+    background-color: transparent;
+    border:2px solid #fff;
+    border-radius: 10rem;
+    padding: 0.75rem 1.5rem;
   }
 }//page-wrapper end

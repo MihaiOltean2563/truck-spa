@@ -1,11 +1,34 @@
 #home{
     min-height: 100vh;
     display: flex;
-    justify-content: center;
     align-items: center;
-    h1{
-        font-size: 10rem;
-        color: gray;
-        opacity: 0.075;
+
+    .flex-parent{
+      // border:1px solid goldenrod;
+      width: 100vw;
+      display: flex;
+
+      .flex-child{
+        width: 50%;
+        // border:1px solid green;
+
+        img{
+          height:160px;
+        }
+      }
+      h1{
+        border-bottom: 2px solid white;
+        line-height: 90px;
+        margin-bottom: 1rem;
+      }
+      p{
+        font-size: 1.5rem;
+        margin-bottom: 2rem;
+      }
+    }
+    .flex-parent .flex-child:last-child{
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 }
