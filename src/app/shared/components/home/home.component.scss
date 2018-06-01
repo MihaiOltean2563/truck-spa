@@ -5,7 +5,7 @@
 
     .flex-parent{
       // border:1px solid goldenrod;
-      width: 100vw;
+      width: 100%;
       display: flex;
 
       .flex-child{
@@ -20,6 +20,7 @@
         border-bottom: 2px solid white;
         line-height: 90px;
         margin-bottom: 1rem;
+        font-size: 5rem;
       }
       p{
         font-size: 1.5rem;

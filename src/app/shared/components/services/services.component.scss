@@ -3,9 +3,46 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    h1{
-        font-size: 10rem;
-        color: gray;
-        opacity: 0.075;
-    }
+    flex-direction: column;
+
+   .flex-parent{
+      width: 100%;
+      display: flex;
+      // border: 1px solid goldenrod;
+
+      .flex-child{
+        width: 50%;
+
+        .service-item{
+          border: 1px solid aquamarine;
+          display: flex;
+          .service-item-logo{
+            width: 25%;
+
+            .icon {
+              display: inline-block;
+              width: 1em;
+              height: 1em;
+              stroke-width: 0;
+              stroke: currentColor;
+              fill: currentColor;
+            }
+            .icon-location,
+            .icon-diamond,
+            .icon-display,
+            .icon-music,
+            .icon-megaphone {
+              font-size: 32px;
+              color: #fff;
+            }
+          }
+          .service-item-content{
+            width: auto;
+          }
+        }
+      }
+   }
+
+   //Icons
+   
 }

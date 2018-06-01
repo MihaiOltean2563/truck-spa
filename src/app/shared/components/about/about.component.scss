@@ -3,9 +3,28 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    h1{
-        font-size: 10rem;
-        color: gray;
-        opacity: 0.075;
+    
+    .flex-parent{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+
+        .flex-child{
+        	text-align: center;
+				}
+				
+        h1{
+						font-size: 3.5rem;
+						margin-bottom: 2rem;
+						line-height: 1.1;
+    				font-weight: bold;
+				}
+				p{
+					opacity: .75;
+				}
+		}
+		.flex-parent .flex-child:last-child{
+     	width: 80%;
     }
 }
