@@ -1,3 +1,5 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
 *{
   box-sizing: border-box;
 }
@@ -61,3 +63,32 @@ section{
     padding: 0.75rem 1.5rem;
   }
 }//page-wrapper end
+
+$grid-breakpoints: (
+  // Extra small screen / phone
+  xs: 0,
+  // Small screen / phone
+  sm: 576px,
+  // Medium screen / tablet
+  md: 768px,
+  // Large screen / desktop
+  lg: 992px,
+  // Extra large screen / wide desktop
+  xl: 1200px
+);
+
+@include media-breakpoint-down(sm) {
+  
+  .navigation-component{
+    display:none; 
+  }
+  .page-wrapper .main{
+    width: 100vw;
+  }
+  .components-wrapper{
+    width: 100vw!important;
+    //why is it being overidden?
+  }
+  
+}
+
