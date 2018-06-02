@@ -2,10 +2,12 @@
 
 @include media-breakpoint-down(md) {
 
-  .flex-parent{
-
-    .flex-child{
-      width:100vw;
+  #services{
+    .flex-parent{
+      flex-wrap: wrap;
+      .flex-child{
+        width:100vw;
+      }
     }
   }
 }
@@ -24,12 +26,12 @@
       margin-bottom: 1rem;
     }
    .flex-parent{
-      // width: 100%;
+      width: 100%;
       display: flex;
       border: 5px solid goldenrod;
 
       .flex-child{
-        width: 50%;
+        // width: 50%;
         
         .service-item{
           border: 1px solid aquamarine;
