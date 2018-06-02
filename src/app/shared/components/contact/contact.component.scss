@@ -3,9 +3,22 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    h1{
-        font-size: 10rem;
-        color: gray;
-        opacity: 0.075;
+    
+    .flex-parent{
+        display:flex;
+        flex-direction: column;
+        width: 50vw;
+        
+        .flex-child{
+            display:flex;
+            flex-direction: row;
+            margin-top:2rem;
+        }
+        .flex-child > div{
+            width: 50%;
+        }
+        p.email{
+            margin-bottom:2rem;
+        }
     }
 }

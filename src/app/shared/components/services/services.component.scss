@@ -1,3 +1,15 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
+@include media-breakpoint-down(md) {
+
+  .flex-parent{
+
+    .flex-child{
+      width:100vw;
+    }
+  }
+}
+
 #services{
     min-height: 100vh;
     display: flex;
@@ -12,7 +24,7 @@
       margin-bottom: 1rem;
     }
    .flex-parent{
-      width: 100%;
+      // width: 100%;
       display: flex;
       border: 5px solid goldenrod;
 
@@ -52,8 +64,12 @@
           }
         }
       }
+      
+      
    }
 
-   //Icons
-   
+   //Icons  
 }
+
+
+
