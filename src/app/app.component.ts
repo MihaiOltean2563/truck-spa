@@ -8,7 +8,8 @@ import {
   HostListener,
   ViewChild,
   Output,
-  EventEmitter
+  EventEmitter,
+  OnInit
 } from "@angular/core";
 import { ComponentItemDirective } from "./shared/directives/component-item.directive";
 import {
@@ -19,13 +20,15 @@ import {
   AnimationPlayer
 } from "@angular/animations";
 import { WindowObjReferenceService } from "./shared/services/window-obj-reference.service";
+import { NavigationLinksService } from "./shared/services/navigation-links.service";
+import { NavigationLink } from "./shared/models/navigation-links.model";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
-export class AppComponent implements AfterViewInit {
+export class AppComponent implements OnInit, AfterViewInit {
   public currentComponent: number = 0;
   public firstComponentHeight: number;
   private player: AnimationPlayer;
@@ -33,22 +36,40 @@ export class AppComponent implements AfterViewInit {
   private actualWindowObj;
   @ViewChildren(ComponentItemDirective, { read: ElementRef })
   public componentList: QueryList<ElementRef>;
-
+  private navListItems = [
+    { icon: "home", label: "Home", isActive: true },
+    { icon: "info-circle", label: "About", isActive: false },
+    { icon: "list-alt", label: "Services", isActive: false },
+    { icon: "phone", label: "Contact", isActive: false }
+  ];
   @ViewChild("componentsWrapper") private componentsWrapper: ElementRef;
+  private selectedItem = 0;
 
+  // private serviceNavLinks: NavigationLink[];
 
   constructor(
     private builder: AnimationBuilder,
-    private winRef: WindowObjReferenceService
-  ) {
-    // getting the native window obj
-    this.actualWindowObj = winRef.nativeWindow;
-  }
+    private winRef: WindowObjReferenceService,
+    private navService: NavigationLinksService) {}
 
+  ngOnInit(){
+    // this.serviceNavLinks = this.navService.getnavListItems();
+    // console.log("serviceNavLinks: ", this.serviceNavLinks);
+
+  }
+  
   ngAfterViewInit() {
     this.firstComponentHeight = this.componentList.toArray()[0].nativeElement.offsetHeight;
   }
-
+  isActive(i){
+    this.navListItems[this.selectedItem].isActive = false; //reset
+    this.navListItems[i].isActive = true;
+    this.selectedItem = i;
+  }
+  listClick(newItem, index) {
+    this.isActive(index);
+    this.scrollThisIntoView(index);
+  }
 
   next() {
     if (this.currentComponent + 1 === this.componentList.length) return;
@@ -65,6 +86,7 @@ export class AppComponent implements AfterViewInit {
     
     this.player = myAnimation.create(this.componentsWrapper.nativeElement);
     this.player.play();
+    this.isActive(this.currentComponent);
   }
   prev() {
     if (this.currentComponent === 0) return;
@@ -81,6 +103,7 @@ export class AppComponent implements AfterViewInit {
 
     this.player = myAnimation.create(this.componentsWrapper.nativeElement);
     this.player.play();
+    this.isActive(this.currentComponent);
   }
 
   @HostListener("window:wheel", ["$event"])
@@ -94,8 +117,9 @@ export class AppComponent implements AfterViewInit {
     }
   }
 
+
   scrollThisIntoView(index: any) {
-    const offset = index.index * this.firstComponentHeight;
+    const offset = index * this.firstComponentHeight;
     console.log('go to section from nav: ', index)
     const myAnimation: AnimationFactory = this.builder.build([
       animate(this.timing, style({ transform: `translateY(-${offset}px)` }))

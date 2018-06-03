@@ -5,12 +5,31 @@
 
 <div class="page-wrapper">
     
-  <app-navigation 
+  <!-- <app-navigation 
     class="navigation-component" 
     [(actComp)]="currentComponent"
     (scrollThisElemIntoView)="scrollThisIntoView($event)"
     >
-  </app-navigation>
+  </app-navigation> -->
+  <div class="left-nav">
+    <div class="navigation">
+      <ul class="navigation-list">
+        <li 
+        *ngFor="let item of navListItems;let i = index" 
+        id="{{item.label | lowercase}}"
+        (click)="listClick(item, i)"
+        [ngClass]="{'active': item.isActive }">
+          <a href="#">
+            <i 
+            class="fa fa-{{item.icon}}" 
+            aria-hidden="true"
+            data-fa-mask="fas fa-circle" 
+            data-fa-transform="shrink-5 up-.5">
+            </i> {{item.label}}
+          </a>
+      </ul>
+    </div>
+  </div>
   
   <div class="main">
     <div class="components-wrapper" #componentsWrapper>
@@ -27,6 +46,16 @@
           <contact></contact>
       </section>
     </div>
-  
-  
+  </div>
+
+  <div class="right-nav">
+    <ul>
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+      <li>4</li>
+    </ul>
+  </div>
+
+
 </div>

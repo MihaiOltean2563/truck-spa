@@ -21,16 +21,13 @@ import { ComponentItemDirective } from "../../directives/component-item.directiv
   styleUrls: ["./navigation.component.scss"]
 })
 export class NavigationComponent {
-  constructor(
-    private renderer: Renderer2) {
-      
-    }
+  constructor() {}
 
     public currentComponent: number = 0;
 
-    @Input() set actComp(index: number){
-      this.isActive(index);
-    };
+    // @Input() set actComp(index: number){
+    //   this.isActive(index);
+    // };
 
 
   @Output()
@@ -47,16 +44,16 @@ export class NavigationComponent {
   
   private selectedItem = 0;
 
-  isActive(i){
-    this.navListItems[this.selectedItem].isActive = false; //reset
-    this.navListItems[i].isActive = true;
-    this.selectedItem = i;
-  }
+  // isActive(i){
+  //   this.navListItems[this.selectedItem].isActive = false; //reset
+  //   this.navListItems[i].isActive = true;
+  //   this.selectedItem = i;
+  // }
   
-  listClick(newItem, index) {
-    this.isActive(index);
+  // listClick(newItem, index) {
+  //   this.isActive(index);
 
-    this.scrollThisElemIntoView.emit({index: index, selectedItem: this.selectedItem});
-    console.log('new selectedItem', this.selectedItem);
-  }
+  //   this.scrollThisElemIntoView.emit({index: index, selectedItem: this.selectedItem});
+  //   console.log('new selectedItem', this.selectedItem);
+  // }
 }
