@@ -6,7 +6,7 @@
     .flex-parent{
       width: 100%;
       display: flex;
-
+      
       .flex-child{
         width: 50%;
       }
@@ -23,10 +23,44 @@
         font-size: 1.5rem;
         margin-bottom: 2rem;
       }
+      .mobile-menu{
+        width: 20px;
+        height: 19px;
+        background-color: transparent;
+        position: absolute;
+
+
+        .mobile-menu__middle{
+          width: 20px;
+          height: 3px;
+          background-color:white;
+        }
+        
+      }
+      .mobile-menu:before{
+        content: '';
+        position: absolute;
+        top:-7px;
+        left:0;
+        width: 20px;
+        height: 3px;
+        background-color:white;
+      }
+      .mobile-menu:after{
+        content: '';
+        position: absolute;
+        bottom:9px;
+        left:0;
+        width: 20px;
+        height: 3px;
+        background-color:white;
+      }
     }
     .flex-parent .flex-child:last-child{
       display: flex;
       justify-content: center;
       align-items: center;
     }
+
 }
+
