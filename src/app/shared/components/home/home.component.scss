@@ -4,17 +4,14 @@
     align-items: center;
 
     .flex-parent{
-      // border:1px solid goldenrod;
       width: 100%;
       display: flex;
 
       .flex-child{
         width: 50%;
-        // border:1px solid green;
-
-        img{
-          height:160px;
-        }
+      }
+      img.logo-img{
+        max-width: 160px;
       }
       h1{
         border-bottom: 2px solid white;

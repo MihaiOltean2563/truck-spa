@@ -36,28 +36,24 @@ contact{
   min-height: 100%;
 }
 section{
-  min-height: 100vh;
   // border:2px solid lime;
+  min-height: 100vh;
   display:flex;
-
-  .dino-img{
-    margin:0 auto;
-    img{
-      max-width:400px;
-    }
-  }
 }
 
 .page-wrapper{
   display:flex;
   justify-content: center;
-  // background: -webkit-gradient(linear, right top, left top, from(#D1335B), to(#00152e));
-  // background: linear-gradient(to left, #D1335B, #00152e);
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+
+  img.nav-logo-img{
+    height: 48px;
+    width: auto;
+  }
 
   .left-nav{
     height: 100vh;

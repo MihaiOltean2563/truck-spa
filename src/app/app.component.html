@@ -5,14 +5,17 @@
 
 <div class="page-wrapper">
     
-  <!-- <app-navigation 
-    class="navigation-component" 
-    [(actComp)]="currentComponent"
-    (scrollThisElemIntoView)="scrollThisIntoView($event)"
-    >
-  </app-navigation> -->
   <div class="left-nav">
     <div class="navigation">
+      <div class="website-logo-wrapper">
+        <div class="logo">
+          <img class="nav-logo-img" src="../assets/img/logo_white.png" alt="logo-white">
+        </div>
+        <div class="content">
+          <span>Simpleux</span><br>
+          <span>Portfolio Template</span>
+        </div>
+      </div>
       <ul class="navigation-list">
         <li 
         *ngFor="let item of navListItems;let i = index" 
@@ -62,6 +65,20 @@
           </a>
         </li>
       </ul>
+      <div class="social-wrapper">
+        <a href="#">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="#">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="#">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+        <a href="#">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
     </div>
   </div>
 

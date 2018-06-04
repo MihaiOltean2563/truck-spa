@@ -31,9 +31,28 @@
       }
     }
   }
+
+  .website-logo-wrapper{
+    display: flex;
+    align-self: flex-start;
+    color: white;
+    margin-top: 30px;
+
+    .logo{
+      width: 25%;
+    }
+    .content{
+      width:75%;
+      padding-left: 10px;
+    }
+    .content > span:last-child{
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
 }
 
 .right-nav{
+  // border:1px solid goldenrod;
   .navigation{
     display: flex;
     justify-content: center;
@@ -71,6 +90,23 @@
         right: 3px;
         background:white;
         opacity: 1;
+      }
+    }
+
+    .social-wrapper{
+      
+      align-self: flex-end;
+      padding-bottom: 30px;
+      svg{
+        color: rgba(255, 255, 255, 0.5);
+        margin: 0 7px;
+        font-size: 24px;
+      }
+      svg:hover{
+        color: white;
+      }
+      a:hover{
+        text-decoration: none;
       }
     }
   }
