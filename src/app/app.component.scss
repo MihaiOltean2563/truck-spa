@@ -110,5 +110,83 @@
       }
     }
     
+    
+  }
+}
+
+.mobile-menu{
+  width: 20px;
+  height: 19px;
+  background-color: transparent;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  display: none;
+  align-items: center;
+  
+
+  .mobile-menu__middle{
+    width: 20px;
+    height: 3px;
+    background-color:white;
+    position: absolute;
+  }
+  .mobile-menu__top{
+    position: absolute;
+    top:1px;
+    left:0;
+    width: 20px;
+    height: 3px;
+    background-color:white;
+    transform-origin: 0 0;
+  }
+  .mobile-menu__bottom{
+    position: absolute;
+    top:15px;
+    left:0;
+    width: 20px;
+    height: 3px;
+    background-color:white;
+    transform-origin: 0 100%;
+  }
+  
+}
+.mobile-menu.show{
+  .mobile-menu__top{
+    transform: rotate(45deg) scaleX(1.28) translateY(-1px);
+  }
+  .mobile-menu__middle{
+    opacity: 0;
+  }
+  .mobile-menu__bottom{
+    transform: rotate(-45deg) scaleX(1.25) translateY(3px);
+  }
+}
+
+.website-logo-wrapper--mobile{
+  display: none;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+@media only screen and (max-width: 640px) {
+  .mobile-menu{
+    display: flex;
+  }
+  .website-logo-wrapper--mobile{
+    display: flex;
+    color: white;
+    
+    .logo{
+      width: 25%;
+    }
+    .content{
+      width:75%;
+      padding-left: 10px;
+    }
+    .content > span:last-child{
+      color: rgba(255, 255, 255, 0.5);
+    }
   }
 }
