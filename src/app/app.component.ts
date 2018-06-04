@@ -36,15 +36,17 @@ export class AppComponent implements OnInit, AfterViewInit {
   private actualWindowObj;
   @ViewChildren(ComponentItemDirective, { read: ElementRef })
   public componentList: QueryList<ElementRef>;
+
+  @ViewChild("componentsWrapper") private componentsWrapper: ElementRef;
+  private selectedItem = 0;
+  
   private navListItems = [
     { icon: "home", label: "Home", isActive: true },
     { icon: "info-circle", label: "About", isActive: false },
     { icon: "list-alt", label: "Services", isActive: false },
     { icon: "phone", label: "Contact", isActive: false }
   ];
-  @ViewChild("componentsWrapper") private componentsWrapper: ElementRef;
-  private selectedItem = 0;
-
+  
   // private serviceNavLinks: NavigationLink[];
 
   constructor(
@@ -52,11 +54,7 @@ export class AppComponent implements OnInit, AfterViewInit {
     private winRef: WindowObjReferenceService,
     private navService: NavigationLinksService) {}
 
-  ngOnInit(){
-    // this.serviceNavLinks = this.navService.getnavListItems();
-    // console.log("serviceNavLinks: ", this.serviceNavLinks);
-
-  }
+  ngOnInit(){}
   
   ngAfterViewInit() {
     this.firstComponentHeight = this.componentList.toArray()[0].nativeElement.offsetHeight;

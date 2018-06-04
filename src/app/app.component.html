@@ -24,9 +24,10 @@
             class="fa fa-{{item.icon}}" 
             aria-hidden="true"
             data-fa-mask="fas fa-circle" 
-            data-fa-transform="shrink-5 up-.5">
+            data-fa-transform="shrink-7 up-.6">
             </i> {{item.label}}
           </a>
+        </li>
       </ul>
     </div>
   </div>
@@ -49,13 +50,19 @@
   </div>
 
   <div class="right-nav">
-    <ul>
-      <li>1</li>
-      <li>2</li>
-      <li>3</li>
-      <li>4</li>
-    </ul>
+    <div class="navigation">
+      <ul class="navigation-list">
+        <li 
+        *ngFor="let item of navListItems;let i = index" 
+        id="{{item.label | lowercase}}"
+        (click)="listClick(item, i)"
+        [ngClass]="{'active': item.isActive }">
+          <a href="#">
+            <span class="bullet"></span>
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
-
 
 </div>

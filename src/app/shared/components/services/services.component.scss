@@ -7,6 +7,23 @@
       flex-wrap: wrap;
       .flex-child{
         width:100vw;
+
+        .service-item{
+          margin-bottom: 20px;
+
+          .service-item-logo{
+            align-items: start!important;
+
+            i.icon{
+              font-size: 2.5rem;
+              top: 5px;
+              position: relative;
+            }
+          }
+          .service-item-content{
+            margin-left: 10px;
+          }
+        }
       }
     }
   }
@@ -28,13 +45,12 @@
    .flex-parent{
       width: 100%;
       display: flex;
-      border: 5px solid goldenrod;
+      // border: 2px solid goldenrod;
 
       .flex-child{
-        // width: 50%;
         
         .service-item{
-          border: 1px solid aquamarine;
+          // border: 2px solid aquamarine;
           display: flex;
 
           .service-item-logo{
@@ -70,7 +86,6 @@
       
    }
 
-   //Icons  
 }
 
 
