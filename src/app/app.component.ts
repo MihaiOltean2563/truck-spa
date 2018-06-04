@@ -33,12 +33,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   public firstComponentHeight: number;
   private player: AnimationPlayer;
   private timing: string = "700ms ease-in";
-  private actualWindowObj;
+
   @ViewChildren(ComponentItemDirective, { read: ElementRef })
   public componentList: QueryList<ElementRef>;
 
   @ViewChild("componentsWrapper") private componentsWrapper: ElementRef;
-  private selectedItem = 0;
   
   private navListItems = [
     { icon: "home", label: "Home", isActive: true },
@@ -47,11 +46,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     { icon: "phone", label: "Contact", isActive: false }
   ];
   
-  // private serviceNavLinks: NavigationLink[];
 
   constructor(
     private builder: AnimationBuilder,
-    private winRef: WindowObjReferenceService,
     private navService: NavigationLinksService) {}
 
   ngOnInit(){}
@@ -60,9 +57,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.firstComponentHeight = this.componentList.toArray()[0].nativeElement.offsetHeight;
   }
   isActive(i){
-    this.navListItems[this.selectedItem].isActive = false; //reset
-    this.navListItems[i].isActive = true;
-    this.selectedItem = i;
+    this.navListItems.map( (item, index) => {
+      item.isActive = (i == index) ? true : false;
+    });
   }
   listClick(newItem, index) {
     this.isActive(index);

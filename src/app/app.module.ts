@@ -13,6 +13,7 @@ import { NavigationComponent } from './shared/components/navigation/navigation.c
 
 //Custom Directives
 import { ComponentItemDirective } from './shared/directives/component-item.directive';
+import { AnimateBurgerDirective } from './shared/directives/animate-burger.directive';
 
 //Custom Services
 import { WindowObjReferenceService } from './shared/services/window-obj-reference.service';
@@ -26,6 +27,7 @@ import { NavigationLinksService } from './shared/services/navigation-links.servi
     ServicesComponent,
     ContactComponent,
     ComponentItemDirective,
+    AnimateBurgerDirective,
     NavigationComponent
   ],
   imports: [
