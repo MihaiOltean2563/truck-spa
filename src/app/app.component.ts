@@ -9,7 +9,9 @@ import {
   ViewChild,
   Output,
   EventEmitter,
-  OnInit
+  OnInit,
+  Input,
+  ViewEncapsulation
 } from "@angular/core";
 import { ComponentItemDirective } from "./shared/directives/component-item.directive";
 import {
@@ -22,11 +24,14 @@ import {
 import { WindowObjReferenceService } from "./shared/services/window-obj-reference.service";
 import { NavigationLinksService } from "./shared/services/navigation-links.service";
 import { NavigationLink } from "./shared/models/navigation-links.model";
+import { AnimateBurgerDirective } from "./shared/directives/animate-burger.directive";
+import { PartialObserver } from "rxjs/Observer";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  styleUrls: ["./app.component.scss"],
+  encapsulation: ViewEncapsulation.None
 })
 export class AppComponent implements OnInit, AfterViewInit {
   public currentComponent: number = 0;
@@ -37,7 +42,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChildren(ComponentItemDirective, { read: ElementRef })
   public componentList: QueryList<ElementRef>;
 
-  @ViewChild("componentsWrapper") private componentsWrapper: ElementRef;
+  @ViewChild("componentsWrapper", { read: ElementRef}) private componentsWrapper: ElementRef;
   
   private navListItems = [
     { icon: "home", label: "Home", isActive: true },
@@ -45,22 +50,27 @@ export class AppComponent implements OnInit, AfterViewInit {
     { icon: "list-alt", label: "Services", isActive: false },
     { icon: "phone", label: "Contact", isActive: false }
   ];
-  
+
+
 
   constructor(
     private builder: AnimationBuilder,
     private navService: NavigationLinksService) {}
 
-  ngOnInit(){}
-  
+  ngOnInit(){
+
+  }
+
   ngAfterViewInit() {
     this.firstComponentHeight = this.componentList.toArray()[0].nativeElement.offsetHeight;
   }
+
   isActive(i){
     this.navListItems.map( (item, index) => {
       item.isActive = (i == index) ? true : false;
     });
   }
+
   listClick(newItem, index) {
     this.isActive(index);
     this.scrollThisIntoView(index);
