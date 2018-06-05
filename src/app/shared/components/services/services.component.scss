@@ -3,6 +3,9 @@
 @include media-breakpoint-down(md) {
 
   #services{
+    h1.services-intro{
+      font-size: 1.8rem!important;
+    }
     .flex-parent{
       flex-wrap: wrap;
       .flex-child{
@@ -22,6 +25,12 @@
           }
           .service-item-content{
             margin-left: 10px;
+            h4{
+              font-size: 18px;
+            }
+            p{
+              font-size: 13px;
+            }
           }
         }
       }
@@ -36,11 +45,14 @@
     align-items: center;
     flex-direction: column;
 
-    p.services-intro{
+    h1.services-intro{
       width:60%;
-      font-size:1rem;
       text-align: center;
       margin-bottom: 1rem;
+      font-size: 3.5rem;
+      margin-bottom: 2rem;
+      line-height: 1.1;
+      font-weight: bold;
     }
    .flex-parent{
       width: 100%;
