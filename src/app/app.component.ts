@@ -44,7 +44,7 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   @ViewChild("componentsWrapper", { read: ElementRef}) private componentsWrapper: ElementRef;
   
-  private navListItems = [
+  public navListItems = [
     { icon: "home", label: "Home", isActive: true },
     { icon: "info-circle", label: "About", isActive: false },
     { icon: "list-alt", label: "Services", isActive: false },
