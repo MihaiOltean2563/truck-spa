@@ -178,10 +178,34 @@
   left: 20px;
 }
 
+.overlay-menu{
+  .navigation{
+    display: none;
+  }
+}
 
 @media only screen and (max-width: 640px) {
   .overlay-menu{
-    display: none;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+    background: rgba(0, 0, 0, 0);
+    transition: all .5s ease-out;
+
+    .navigation{
+      display: none;
+      justify-content: start;
+      margin-left: 20px;
+
+      ul{
+        li:hover{
+          cursor: pointer;
+        }
+      }
+    }
   }
   body.show{
     .overlay-menu{
@@ -191,14 +215,29 @@
       top: 0;
       height: 100vh;
       width: 100vw;
-      background: rgba(0, 0, 0, .8)
+      background: rgba(0, 0, 0, .8);
+      transition: all .5s ease-out;
+
+      .navigation{
+        display:flex;
+        
+        // .navigation-list{
+        //   width: 100vw;
+
+        //   li{
+        //     width: 140px;
+        //   }
+        // }
+      }
     }
   }
   .mobile-menu{
     display: flex;
-    z-index: 1;
+    z-index: 2;
   }
-  
+  .mobile-menu:hover{
+    cursor: pointer;
+  }
   
   .website-logo-wrapper--mobile{
     display: flex;

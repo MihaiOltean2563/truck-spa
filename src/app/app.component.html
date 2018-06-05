@@ -22,7 +22,26 @@
   </div>
 
   <!-- Overlay Menu-->
-  <div class="overlay-menu overlay"></div>
+  <div class="overlay-menu overlay">
+    <div class="navigation">
+      <ul class="navigation-list">
+        <li 
+        *ngFor="let item of navListItems;let i = index" 
+        id="{{item.label | lowercase}}"
+        (click)="listClick(item, i)"
+        [ngClass]="{'active': item.isActive }">
+          <a href="#">
+            <i 
+            class="fa fa-{{item.icon}}" 
+            aria-hidden="true"
+            data-fa-mask="fas fa-circle" 
+            data-fa-transform="shrink-7 up-.6">
+            </i> {{item.label}}
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
   <!-- Overlay Menu END-->
   
   <div class="left-nav">
