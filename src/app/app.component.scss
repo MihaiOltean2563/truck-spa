@@ -130,6 +130,8 @@
     height: 3px;
     background-color:white;
     position: absolute;
+    transition: all .3s ease-out;
+    transform-origin: 0 0;
   }
   .mobile-menu__top{
     position: absolute;
@@ -139,6 +141,7 @@
     height: 3px;
     background-color:white;
     transform-origin: 0 0;
+    transition: all .3s ease-out;
   }
   .mobile-menu__bottom{
     position: absolute;
@@ -148,18 +151,23 @@
     height: 3px;
     background-color:white;
     transform-origin: 0 100%;
+    transition: all .3s ease-out;
   }
   
 }
 .mobile-menu.show{
   .mobile-menu__top{
     transform: rotate(45deg) scaleX(1.28) translateY(-1px);
+    transition: all .3s ease-out;
   }
   .mobile-menu__middle{
     opacity: 0;
+    transform: scaleX(0);
+    transition: all .3s ease-out;
   }
   .mobile-menu__bottom{
     transform: rotate(-45deg) scaleX(1.25) translateY(3px);
+    transition: all .3s ease-out;
   }
 }
 
