@@ -124,7 +124,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
 
   scrollThisIntoView(index: any) {
-    alert(index);
     const offset = index * this.firstComponentHeight;
     console.log('go to section from nav: ', index)
     const myAnimation: AnimationFactory = this.builder.build([
