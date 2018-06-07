@@ -25,7 +25,7 @@ import { WindowObjReferenceService } from "./shared/services/window-obj-referenc
 import { NavigationLinksService } from "./shared/services/navigation-links.service";
 import { NavigationLink } from "./shared/models/navigation-links.model";
 import { AnimateBurgerDirective } from "./shared/directives/animate-burger.directive";
-import { PartialObserver } from "rxjs/Observer";
+import { PartialObserver } from "rxjs";
 
 @Component({
   selector: "app-root",
