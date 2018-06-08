@@ -19,6 +19,8 @@ import {
   AnimationFactory,
   animate,
   style,
+  trigger,
+  keyframes,
   AnimationPlayer
 } from "@angular/animations";
 import { WindowObjReferenceService } from "./shared/services/window-obj-reference.service";
@@ -26,6 +28,8 @@ import { NavigationLinksService } from "./shared/services/navigation-links.servi
 import { NavigationLink } from "./shared/models/navigation-links.model";
 import { AnimateBurgerDirective } from "./shared/directives/animate-burger.directive";
 import { PartialObserver } from "rxjs";
+
+import * as kf from './shared/keyframes';
 
 @Component({
   selector: "app-root",
@@ -133,5 +137,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.player = myAnimation.create(this.componentsWrapper.nativeElement);
     this.player.play();
   }
+
+ startAnimation(direction){
+   console.log('swiping', direction);
+ }
 
 }

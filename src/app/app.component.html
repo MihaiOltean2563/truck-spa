@@ -11,8 +11,6 @@
     <div class="mobile-menu__bottom"></div>
   </div>
 
-  
-
   <!-- Overlay Menu-->
   <div class="overlay-menu overlay">
     <div class="navigation">
@@ -67,7 +65,7 @@
   </div>
   
   <div class="main">
-    <div class="components-wrapper" #componentsWrapper>
+    <div class="components-wrapper" #componentsWrapper (swipeup)="startAnimation('up')" (swipedown)="startAnimation('down')">
       <section id="home" class="component-item">
         <home></home>
       </section>

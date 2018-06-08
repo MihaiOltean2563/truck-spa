@@ -16,7 +16,13 @@
       <button class="btn btn-primary btn-transparent-rounded">Get started</button>
     </div>
     <div class="flex-child">
-      <img class="logo-img" src="./assets/img/logo_white.png" alt="logo-white">
+      <img 
+      class="logo-img" 
+      src="./assets/img/logo_white.png" 
+      alt="logo-white" 
+      [@cardAnimator]="animationState"
+      (@cardAnimator.done)="resetAnimationState()"
+      (swipeleft)="startAnimation('swing')">
     </div>
   </div>
 </div>
