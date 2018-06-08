@@ -1,4 +1,4 @@
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, HammerGestureConfig, HAMMER_GESTURE_CONFIG } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { CommonModule } from '@angular/common';
@@ -18,6 +18,14 @@ import { AnimateBurgerDirective } from './shared/directives/animate-burger.direc
 import { WindowObjReferenceService } from './shared/services/window-obj-reference.service';
 import { NavigationLinksService } from './shared/services/navigation-links.service';
 
+//HammerJS for touch gestures
+import * as Hammer from 'hammerjs';
+
+export class HammerConfig extends HammerGestureConfig {
+  overrides = <any>{
+    'swipe': { direction: Hammer.DIRECTION_ALL }
+  };
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,7 +41,10 @@ import { NavigationLinksService } from './shared/services/navigation-links.servi
     BrowserAnimationsModule,
     CommonModule
   ],
-  providers: [WindowObjReferenceService, NavigationLinksService],
+  providers: [WindowObjReferenceService, NavigationLinksService, {
+    provide: HAMMER_GESTURE_CONFIG,
+    useClass: HammerConfig
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

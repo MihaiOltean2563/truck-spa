@@ -65,7 +65,10 @@
   </div>
   
   <div class="main">
-    <div class="components-wrapper" #componentsWrapper (swipeup)="startAnimation('up')" (swipedown)="startAnimation('down')">
+    <div class="components-wrapper" #componentsWrapper 
+    (panup)="startAnimation($event)"
+    (pandown)="startAnimation($event)">
+
       <section id="home" class="component-item">
         <home></home>
       </section>
