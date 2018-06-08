@@ -61,15 +61,16 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   startAnimation(e){
     // console.log('e', e);
-    const direction = e.type === 'panup' ? 'up' : 'down';
-    let offset;
-    direction === 'up' ? offset = e.distance : offset = -e.distance;
-    const myAnimation: AnimationFactory = this.builder.build([
-      animate(this.timing, style({ transform: `translateY(${offset}px)` }))
-    ]);
+    // const direction = e.type === 'panup' ? 'up' : 'down';
+    // let offset;
+    // direction === 'up' ? offset = e.deltaY : offset = -e.deltaY;
+    // console.log('offset', offset);
+    // // const myAnimation: AnimationFactory = this.builder.build([
+    // //   animate(this.timing, style({ transform: `translateY(${offset}px)` }))
+    // // ]);
 
-    this.player = myAnimation.create(this.componentsWrapper.nativeElement);
-    this.player.play();
+    // // this.player = myAnimation.create(this.componentsWrapper.nativeElement);
+    // // this.player.play();
   }
 
 
