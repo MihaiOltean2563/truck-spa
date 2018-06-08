@@ -60,10 +60,11 @@ export class AppComponent implements OnInit, AfterViewInit {
   animationState: string = 'Home';
 
   startAnimation(e){
-    // console.log('e', e);
-    // const direction = e.type === 'panup' ? 'up' : 'down';
-    // let offset;
+    console.log('e', e);
+    const direction = e.type === 'panup' ? 'up' : 'down';
+    let offset;
     // direction === 'up' ? offset = e.deltaY : offset = -e.deltaY;
+    direction === 'up' ? this.next() : this.prev();
     // console.log('offset', offset);
     // // const myAnimation: AnimationFactory = this.builder.build([
     // //   animate(this.timing, style({ transform: `translateY(${offset}px)` }))
