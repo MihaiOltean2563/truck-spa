@@ -36,7 +36,7 @@ contact{
   min-height: 100%;
 }
 section{
-  border:2px solid lime;
+  // border:2px solid lime;
   min-height: 100vh;
   display:flex;
 }
@@ -67,7 +67,7 @@ section{
     width:70%;
     overflow:hidden;
     height: 100vh;
-    border: 3px solid goldenrod;
+    // border: 3px solid goldenrod;
   }
 
   // Buttons
@@ -93,9 +93,9 @@ section{
     //why is it being overidden?
   }
 
-  .page-wrapper .main{
-    z-index: 2;
-  }
+  // .page-wrapper .main{
+  //   z-index: 2;
+  // }
   
 }
 
