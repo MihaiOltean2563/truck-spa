@@ -226,6 +226,7 @@
   .mobile-menu{
     display: flex;
     z-index: 2;
+    position: fixed;
   }
   .mobile-menu:hover{
     cursor: pointer;
