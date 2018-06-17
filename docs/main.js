@@ -72,7 +72,6 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
-// import {  Router, NavigationEnd } from "@angular/router";
 var AppComponent = /** @class */ (function () {
     function AppComponent(builder, navService) {
         this.builder = builder;
@@ -92,7 +91,6 @@ var AppComponent = /** @class */ (function () {
         this.firstComponentHeight = this.componentList.toArray()[0].nativeElement.offsetHeight;
     };
     AppComponent.prototype.swipe = function (action) {
-        console.log('swiped: ', action.type);
         if (action.type === 'swipedown') {
             this.prev();
         }
@@ -107,7 +105,6 @@ var AppComponent = /** @class */ (function () {
     };
     AppComponent.prototype.listClick = function (item, index) {
         this.isActive(index);
-        console.log('clicked on: ', item.label);
         this.scrollThisIntoView(index);
     };
     AppComponent.prototype.next = function () {
@@ -151,11 +148,9 @@ var AppComponent = /** @class */ (function () {
     };
     AppComponent.prototype.scrollThisIntoView = function (index) {
         var offset = index * this.firstComponentHeight;
-        console.log('go to section from nav: ', index);
         var myAnimation = this.builder.build([
             Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["animate"])(this.timing, Object(_angular_animations__WEBPACK_IMPORTED_MODULE_2__["style"])({ transform: "translateY(-" + offset + "px)" }))
         ]);
-        console.log('wrapper height', this.componentsWrapper.nativeElement.clientHeight);
         this.player = myAnimation.create(this.componentsWrapper.nativeElement);
         this.player.play();
     };
