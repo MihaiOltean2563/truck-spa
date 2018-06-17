@@ -30,7 +30,6 @@ import { NavigationLinksService } from "./shared/services/navigation-links.servi
 import { NavigationLink } from "./shared/models/navigation-links.model";
 import { AnimateBurgerDirective } from "./shared/directives/animate-burger.directive";
 
-// import {  Router, NavigationEnd } from "@angular/router";
 
 @Component({
   selector: "app-root",
@@ -72,7 +71,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   swipe( action) {
-    console.log('swiped: ', action.type);
     if(action.type === 'swipedown'){
       this.prev();
     }else{
@@ -89,7 +87,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   listClick(item, index) {
     this.isActive(index);
-    console.log('clicked on: ', item.label);
     this.scrollThisIntoView(index);
   }
 
@@ -142,11 +139,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   scrollThisIntoView(index: any) {
     const offset = index * this.firstComponentHeight;
-    console.log('go to section from nav: ', index)
     const myAnimation: AnimationFactory = this.builder.build([
       animate(this.timing, style({ transform: `translateY(-${offset}px)` }))
     ]);
-    console.log('wrapper height', this.componentsWrapper.nativeElement.clientHeight)
     this.player = myAnimation.create(this.componentsWrapper.nativeElement);
     this.player.play();
   }
