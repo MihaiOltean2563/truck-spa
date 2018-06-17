@@ -20,12 +20,16 @@ import { NavigationLinksService } from './shared/services/navigation-links.servi
 
 //HammerJS for touch gestures
 import * as Hammer from 'hammerjs';
+import { RouterModule, Routes } from '@angular/router';
 
 export class HammerConfig extends HammerGestureConfig {
   overrides = <any>{
     'swipe': { direction: Hammer.DIRECTION_ALL }
   };
 }
+const appRoutes: Routes = [
+  
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,7 +43,8 @@ export class HammerConfig extends HammerGestureConfig {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    CommonModule
+    CommonModule,
+    RouterModule.forRoot(appRoutes)
   ],
   providers: [WindowObjReferenceService, NavigationLinksService, {
     provide: HAMMER_GESTURE_CONFIG,

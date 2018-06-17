@@ -29,9 +29,8 @@ import { WindowObjReferenceService } from "./shared/services/window-obj-referenc
 import { NavigationLinksService } from "./shared/services/navigation-links.service";
 import { NavigationLink } from "./shared/models/navigation-links.model";
 import { AnimateBurgerDirective } from "./shared/directives/animate-burger.directive";
-import { PartialObserver } from "rxjs";
 
-import * as kf from './shared/keyframes';
+// import {  Router, NavigationEnd } from "@angular/router";
 
 @Component({
   selector: "app-root",
@@ -49,7 +48,10 @@ export class AppComponent implements OnInit, AfterViewInit {
   public componentList: QueryList<ElementRef>;
 
   @ViewChild("componentsWrapper", { read: ElementRef}) private componentsWrapper: ElementRef;
-  
+  @ViewChild("about", { read: ElementRef}) private aboutComp: ElementRef;
+
+  SWIPE_ACTION = { UP: 'swipeup', DOWN: 'swipedown' };
+
   public navListItems = [
     { icon: "home", label: "Home", isActive: true },
     { icon: "info-circle", label: "About", isActive: false },
@@ -57,36 +59,27 @@ export class AppComponent implements OnInit, AfterViewInit {
     { icon: "phone", label: "Contact", isActive: false }
   ];
 
-  animationState: string = 'Home';
-
-  startAnimation(e){
-    console.log('e', e);
-    const direction = e.type === 'panup' ? 'up' : 'down';
-    let offset;
-    // direction === 'up' ? offset = e.deltaY : offset = -e.deltaY;
-    direction === 'up' ? this.next() : this.prev();
-    // console.log('offset', offset);
-    // // const myAnimation: AnimationFactory = this.builder.build([
-    // //   animate(this.timing, style({ transform: `translateY(${offset}px)` }))
-    // // ]);
-
-    // // this.player = myAnimation.create(this.componentsWrapper.nativeElement);
-    // // this.player.play();
-  }
-
-
 
   constructor(
     private builder: AnimationBuilder,
-    private navService: NavigationLinksService) {}
+    private navService: NavigationLinksService,
+    ) {}
 
-  ngOnInit(){
-
-  }
+  ngOnInit(){}
 
   ngAfterViewInit() {
     this.firstComponentHeight = this.componentList.toArray()[0].nativeElement.offsetHeight;
   }
+
+  swipe( action) {
+    console.log('swiped: ', action.type);
+    if(action.type === 'swipedown'){
+      this.prev();
+    }else{
+      this.next();
+    }
+}
+
 
   isActive(i){
     this.navListItems.map( (item, index) => {
@@ -94,8 +87,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     });
   }
 
-  listClick(newItem, index) {
+  listClick(item, index) {
     this.isActive(index);
+    console.log('clicked on: ', item.label);
     this.scrollThisIntoView(index);
   }
 
@@ -152,10 +146,9 @@ export class AppComponent implements OnInit, AfterViewInit {
     const myAnimation: AnimationFactory = this.builder.build([
       animate(this.timing, style({ transform: `translateY(-${offset}px)` }))
     ]);
-
+    console.log('wrapper height', this.componentsWrapper.nativeElement.clientHeight)
     this.player = myAnimation.create(this.componentsWrapper.nativeElement);
     this.player.play();
   }
-
 
 }

@@ -5,14 +5,8 @@
 
 <div class="page-wrapper">
   
-  <!-- <div class="mobile-menu" animateBurger>
-    <div class="mobile-menu__top"></div>
-    <div class="mobile-menu__middle"></div>
-    <div class="mobile-menu__bottom"></div>
-  </div> -->
-
   <!-- Overlay Menu-->
-  <div class="overlay-menu overlay">
+  <!--> <div class="overlay-menu overlay">
     <div class="navigation">
       <ul class="navigation-list">
         <li 
@@ -31,7 +25,7 @@
         </li>
       </ul>
     </div>
-  </div>
+  </div> -->
   <!-- Overlay Menu END-->
   
   <div class="left-nav">
@@ -64,13 +58,17 @@
     </div>
   </div>
   
-  <div class="main">
-      <div class="mobile-menu" animateBurger>
-          <div class="mobile-menu__top"></div>
-          <div class="mobile-menu__middle"></div>
-          <div class="mobile-menu__bottom"></div>
-        </div>
-    <div class="components-wrapper" #componentsWrapper>
+  <div class="main" >
+      <!-- <div class="mobile-menu" animateBurger>
+        <div class="mobile-menu__top"></div>
+        <div class="mobile-menu__middle"></div>
+        <div class="mobile-menu__bottom"></div>
+      </div> -->
+
+    <div class="components-wrapper" 
+    #componentsWrapper 
+    (swipedown)="swipe($event)" 
+    (swipeup)="swipe($event)">
       <section id="home" class="component-item">
         <home></home>
       </section>
@@ -84,7 +82,8 @@
           <contact></contact>
       </section>
     </div>
-  </div>
+
+  </div> 
 
   <div class="right-nav">
     <div class="navigation">
