@@ -11,7 +11,9 @@ import {
   EventEmitter,
   OnInit,
   Input,
-  ViewEncapsulation
+  ViewEncapsulation,
+  HostBinding,
+  Inject
 } from "@angular/core";
 import { ComponentItemDirective } from "./shared/directives/component-item.directive";
 import {
@@ -29,6 +31,7 @@ import { WindowObjReferenceService } from "./shared/services/window-obj-referenc
 import { NavigationLinksService } from "./shared/services/navigation-links.service";
 import { NavigationLink } from "./shared/models/navigation-links.model";
 import { AnimateBurgerDirective } from "./shared/directives/animate-burger.directive";
+import { DOCUMENT } from "@angular/platform-browser";
 
 
 @Component({
@@ -62,7 +65,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(
     private builder: AnimationBuilder,
     private navService: NavigationLinksService,
-    ) {}
+    @Inject(DOCUMENT) private document: Document) {}
 
   ngOnInit(){}
 
@@ -90,39 +93,41 @@ export class AppComponent implements OnInit, AfterViewInit {
     this.scrollThisIntoView(index);
   }
 
+  isScrolled(){
+    return this.currentComponent !== 0 ? true : false;
+  }
+
+  highlightLogo(){
+    this.document.body.classList[this.isScrolled() ? 'add' : 'remove']('show');
+  }
+  
   next() {
     if (this.currentComponent + 1 === this.componentList.length) return;
-
     this.currentComponent =
       (this.currentComponent + 1) % this.componentList.length;
-    console.log("currentComponent", this.currentComponent);
     const offset = this.currentComponent * this.firstComponentHeight;
-
     const myAnimation: AnimationFactory = this.builder.build([
       animate(this.timing, style({ transform: `translateY(-${offset}px)` }))
     ]);
-   
-    
     this.player = myAnimation.create(this.componentsWrapper.nativeElement);
     this.player.play();
     this.isActive(this.currentComponent);
+    this.highlightLogo();
+
   }
   prev() {
     if (this.currentComponent === 0) return;
-
     this.currentComponent =
       (this.currentComponent - 1 + this.componentList.length) %
       this.componentList.length;
-    console.log("currentComponent", this.currentComponent);
     const offset = this.currentComponent * this.firstComponentHeight;
-
     const myAnimation: AnimationFactory = this.builder.build([
       animate(this.timing, style({ transform: `translateY(-${offset}px)` }))
     ]);
-
     this.player = myAnimation.create(this.componentsWrapper.nativeElement);
     this.player.play();
     this.isActive(this.currentComponent);
+    this.highlightLogo();
   }
 
   @HostListener("window:wheel", ["$event"])
