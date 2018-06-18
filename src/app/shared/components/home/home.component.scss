@@ -35,6 +35,9 @@
   #home{
     .flex-parent{
       text-align: center;
+      h1{
+        font-size: 4rem;
+      }
     }
     .flex-parent .flex-child:first-child{
       width: auto;

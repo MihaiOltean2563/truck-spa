@@ -5,9 +5,12 @@
   #services{
     h1.services-intro{
       font-size: 1.8rem!important;
+      margin-bottom: 1rem!important;
     }
     .flex-parent{
       flex-wrap: wrap;
+      max-height: 100vh;
+
       .flex-child{
         width:100vw;
 
@@ -18,7 +21,7 @@
             align-items: start!important;
 
             i.icon{
-              font-size: 2.5rem;
+              font-size: 1.5rem;
               top: 5px;
               position: relative;
             }
@@ -29,10 +32,13 @@
               font-size: 18px;
             }
             p{
-              font-size: 13px;
+              font-size: 12px;
             }
           }
         }
+      }
+      .flex-child:last-child{
+        display: none;
       }
     }
   }

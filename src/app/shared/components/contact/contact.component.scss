@@ -4,6 +4,10 @@
     #contact{
       .flex-parent{
         width: 80vw!important;
+        margin-top: 50px;
+        p{
+          font-size: 12px;
+        }
         .flex-child > div{
           width: 100%!important;
         }
@@ -31,7 +35,7 @@
           width: 50%;
       }
       p.email{
-          margin-bottom:2rem;
+          margin-bottom:1.5rem;
       }
       .button-wrapper{
         margin-top: 30px;
