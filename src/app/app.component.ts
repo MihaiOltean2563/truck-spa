@@ -75,8 +75,10 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   swipe( action) {
     if(action.type === 'swipedown'){
+      console.log('swiped down')
       this.prev();
     }else{
+      console.log('swiped up')
       this.next();
     }
 }
@@ -98,7 +100,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   highlightLogo(){
-    this.document.body.classList[this.isScrolled() ? 'add' : 'remove']('show');
+    this.document.body.classList[this.isScrolled() ? 'add' : 'remove']('highlightNav');
   }
   
   next() {
